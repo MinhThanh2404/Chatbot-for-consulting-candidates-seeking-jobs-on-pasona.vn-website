@@ -1,0 +1,10 @@
+{
+    "apps": [{
+        "name": "SearchAPI",
+        "script": "app.py",
+        "args": [],
+        "wait_ready": true,
+        "autorestart": false,
+        "max_restarts": 5
+    }]
+}
