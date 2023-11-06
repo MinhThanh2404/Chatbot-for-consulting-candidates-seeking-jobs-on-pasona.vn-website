@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
 from routes.chat import chat_bp
-from routes.dashboard import dashboard_bp
 from utils.db import init_db
 from dotenv import load_dotenv
 import os
@@ -22,7 +21,6 @@ init_db(app)
 
 # Register blueprint
 app.register_blueprint(chat_bp)
-app.register_blueprint(dashboard_bp)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8001)
