@@ -187,17 +187,31 @@ $(document).ready(function () {
       e.preventDefault();
       e.stopPropagation();
     } else {
+      $(".chat-userInfo").toggleClass("chat-hide");
       let name = $("#U_Name").val();
       let email = $("#U_Email").val();
       let phone = $("#U_Phone").val();
 
       console.log(name, email, phone);
 
-      submitUserInfo(name, email, phone);
+      // submitUserInfo(name, email, phone);
       // The value of cust_id has been updated at this point
-      console.log(localStorage.getItem("cust_id"));
+      // console.log(localStorage.getItem("cust_id"));
+      let userInfo = ''
+      userInfo += 'Name: '+name+'<br/>'
+      userInfo += 'Email: '+email+'<br/>'
+      userInfo += 'Phone: '+phone+'<br/>'
 
-      $(".chat-userInfo").toggleClass("chat-hide");
+      $(".direct-chat-messages").append(
+        `<div class="direct-chat-msg right">
+              <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_2.jpg"
+                  alt="Message User Image">
+              <div class="direct-chat-text">
+                  <p>${userInfo}</p>
+              </div>
+              </div>`
+      );
+  
 
       $(".direct-chat-messages").append(searchfrom);
 
@@ -393,7 +407,7 @@ function clear_mes_hist() {
     $(".direct-chat-messages").html(`<div class="chat-userInfo">
                     <p class="text-black" style="color: black; font-size:small">Hello. Could you please provide
                         information so we can easily contact you?</p>
-                    <form class="contact-info" action="{{route('saveData')}}" method="POST">
+                    <form class="contact-info">
                         <div class="form-group">
                             <input type="text" name='U_Name' class="form-control" aria-describedby="Name" placeholder="Name" id='U_Name' required>
                         </div>
